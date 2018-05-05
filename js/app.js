@@ -16,6 +16,22 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.newX = this.speed * dt;
+    this.x += this.newX;
+
+    // prevent enemy disapper go out off canvas
+    if (this.x >= 505) {
+      this.x = 0;
+      if (this.y === 60) {
+        this.y = 225;
+      } else if (this.y === 225) {
+        this.y = 145;
+      } else {
+        this.y = 60;
+      }
+      console.log(`I'm out`);
+    }
+    // console.log(`${this.x}`);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -48,9 +64,9 @@ Player.prototype.update = function(dt) {
 
 
 // Now instantiate your objects.
-const enemy1 = new Enemy(50, 50, 500);
-const enemy2 = new Enemy(200, 110, 200);
-
+const enemy1 = new Enemy(0, 60, 500);
+const enemy2 = new Enemy(200, 145, 200);
+const enemy3 = new Enemy(406, 225, 300);
 
 // function enemyArray(enemyNum) {
 // 	const allEnemies = [];
@@ -68,10 +84,12 @@ const enemy2 = new Enemy(200, 110, 200);
 const allEnemies = [];
 allEnemies.push(enemy1);
 allEnemies.push(enemy2);
+allEnemies.push(enemy3);
+
 console.log(allEnemies);
 
 // Place the player object in a variable called player
-const player = new Player(101, 435);
+const player = new Player(203, 435);
 
 
 
