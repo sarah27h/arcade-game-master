@@ -62,6 +62,21 @@ Player.prototype.update = function(dt) {
 
 };
 
+Player.prototype.handleInput = function(keyPressed) {
+  if(keyPressed == 'up' && this.y >= 0) {
+    console.log(keyPressed);
+    this.y -= 90;
+  } else if (keyPressed == 'down' && this.y <= 310) {
+    console.log(this.y);
+    this.y += 90;
+  } else if (keyPressed == 'right' && this.x <= 350) {
+    // 505 - 65 = 440
+    console.log(this.x);
+    this.x += 90;
+  }  else if (keyPressed == 'left' && this.x >= 65) {
+    this.x -= 90;
+  }
+};
 
 // Now instantiate your objects.
 const enemy1 = new Enemy(0, 60, 500);
@@ -89,7 +104,7 @@ allEnemies.push(enemy3);
 console.log(allEnemies);
 
 // Place the player object in a variable called player
-const player = new Player(203, 435);
+const player = new Player(202, 400);
 
 
 
