@@ -8,6 +8,8 @@ var Enemy = function(x, y, speed) {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
+    this.width = 96;
+    this.height = 66;
     this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -48,6 +50,8 @@ var Player = function(x, y) {
     // we've provided one for you to get started
     this.x= x;
     this.y = y;
+    this.width = 66;
+    this.height = 75;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
@@ -72,7 +76,7 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(keyPressed) {
   console.log(this.x);
   console.log(this.y);
-  if(keyPressed == 'up' && this.y >= 0) {
+  if(keyPressed == 'up') {
     // this.y -= 90;
     pressUp = true;
   } else if (keyPressed == 'down' && this.y <= 310) {
@@ -89,7 +93,7 @@ Player.prototype.handleInput = function(keyPressed) {
 };
 
 // Now instantiate your objects.
-const enemy1 = new Enemy(0, 60, 1);
+const enemy1 = new Enemy(0, 60, 30);
 // const enemy2 = new Enemy(200, 145, 200);
 // const enemy3 = new Enemy(406, 225, 300);
 
@@ -132,9 +136,13 @@ document.addEventListener('keyup', function(e) {
 });
 
 Player.prototype.checkCollisions = function(){
-  if(player.x === 102 && player.y === 310) {
-    console.log(`collisions ${player.x} ${player.y} ${allEnemies[0].x}`);
-    player.begin();
+
+  if (player.x < allEnemies[0].x + allEnemies[0].width &&
+   player.x + player.width > allEnemies[0].x &&
+   player.y < allEnemies[0].y + allEnemies[0].height &&
+   player.height + player.y > allEnemies[0].y) {
+     console.log(`collisions ${player.x} ${player.y} ${allEnemies[0].x}`);
+     player.begin();
   }
 }
 
