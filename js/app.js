@@ -34,7 +34,7 @@ Enemy.prototype.update = function(dt) {
         this.y = 60;
       }
     }
-    checkCollisions(player.x, player.y, allEnemies[0].x, allEnemies[0].y);
+    player.checkCollisions();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -131,9 +131,18 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-function checkCollisions(playerX, playerY, enemyX, enemyY) {
-  if(playerX === 102 && playerY === 310) {
-    console.log(`collisions ${playerX} ${playerY}`);
-
+Player.prototype.checkCollisions = function(){
+  if(player.x === 102 && player.y === 310) {
+    console.log(`collisions ${player.x} ${player.y} ${allEnemies[0].x}`);
+    player.begin();
   }
+}
+
+Player.prototype.begin = function() {
+  setTimeout(function(){
+    player.x = 202;
+    player.y = 400;
+
+  }, 200);
+
 }
