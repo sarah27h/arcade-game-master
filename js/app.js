@@ -1,3 +1,6 @@
+let pressUp = false,
+    pressRight = false;
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -31,7 +34,6 @@ Enemy.prototype.update = function(dt) {
       }
       console.log(`I'm out`);
     }
-    // console.log(`${this.x}`);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -49,39 +51,50 @@ var Player = function(x, y) {
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
 };
+
 // This class requires an update(), render() and
 // a handleInput() method.
+Player.prototype.update = function() {
+  if (pressRight === true && this.x <= 350 ) {
+    this.x  += 90;
+    pressRight = false;
+    console.log(`update x ${this.x}`);
+  } else if (pressUp === true && this.y >= 0) {
+    this.y -= 90;
+    pressUp = false;
+  }
+
+  // this.newY = this.y + 90;
+};
+
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-
-};
-
 Player.prototype.handleInput = function(keyPressed) {
+
   if(keyPressed == 'up' && this.y >= 0) {
     console.log(keyPressed);
-    this.y -= 90;
+    // this.y -= 90;
+    pressUp = true;
   } else if (keyPressed == 'down' && this.y <= 310) {
     console.log(this.y);
     this.y += 90;
-  } else if (keyPressed == 'right' && this.x <= 350) {
+  } else if (keyPressed === 'right') {
     // 505 - 65 = 440
-    console.log(this.x);
-    this.x += 90;
+    console.log(`press right`);
+    // this.x += 90;
+    // player.update();
+    pressRight = true;
   }  else if (keyPressed == 'left' && this.x >= 65) {
     this.x -= 90;
   }
 };
 
 // Now instantiate your objects.
-const enemy1 = new Enemy(0, 60, 500);
-const enemy2 = new Enemy(200, 145, 200);
-const enemy3 = new Enemy(406, 225, 300);
+const enemy1 = new Enemy(0, 60, 1);
+// const enemy2 = new Enemy(200, 145, 200);
+// const enemy3 = new Enemy(406, 225, 300);
 
 // function enemyArray(enemyNum) {
 // 	const allEnemies = [];
@@ -98,8 +111,8 @@ const enemy3 = new Enemy(406, 225, 300);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
 allEnemies.push(enemy1);
-allEnemies.push(enemy2);
-allEnemies.push(enemy3);
+// allEnemies.push(enemy2);
+// allEnemies.push(enemy3);
 
 console.log(allEnemies);
 
@@ -120,3 +133,12 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// function checkCollisions() {
+//   // console.log('collisions');
+//   if(player.x === allEnemies[0].x) {
+//     console.log('collisions');
+//   }
+//   // console.log(player.x);
+//   // // console.log(allEnemies[0].x);
+// }
