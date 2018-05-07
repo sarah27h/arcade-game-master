@@ -1,6 +1,7 @@
 let pressUp = false,
     pressRight = false;
 
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -32,8 +33,8 @@ Enemy.prototype.update = function(dt) {
       } else {
         this.y = 60;
       }
-      console.log(`I'm out`);
     }
+    checkCollisions(player.x, player.y, allEnemies[0].x, allEnemies[0].y);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -56,15 +57,12 @@ var Player = function(x, y) {
 // a handleInput() method.
 Player.prototype.update = function() {
   if (pressRight === true && this.x <= 350 ) {
-    this.x  += 90;
+    this.x  += 100;
     pressRight = false;
-    console.log(`update x ${this.x}`);
   } else if (pressUp === true && this.y >= 0) {
     this.y -= 90;
     pressUp = false;
   }
-
-  // this.newY = this.y + 90;
 };
 
 Player.prototype.render = function() {
@@ -72,23 +70,22 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(keyPressed) {
-
+  console.log(this.x);
+  console.log(this.y);
   if(keyPressed == 'up' && this.y >= 0) {
-    console.log(keyPressed);
     // this.y -= 90;
     pressUp = true;
   } else if (keyPressed == 'down' && this.y <= 310) {
-    console.log(this.y);
     this.y += 90;
   } else if (keyPressed === 'right') {
     // 505 - 65 = 440
-    console.log(`press right`);
     // this.x += 90;
     // player.update();
     pressRight = true;
   }  else if (keyPressed == 'left' && this.x >= 65) {
-    this.x -= 90;
+    this.x -= 100;
   }
+
 };
 
 // Now instantiate your objects.
@@ -134,11 +131,9 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// function checkCollisions() {
-//   // console.log('collisions');
-//   if(player.x === allEnemies[0].x) {
-//     console.log('collisions');
-//   }
-//   // console.log(player.x);
-//   // // console.log(allEnemies[0].x);
-// }
+function checkCollisions(playerX, playerY, enemyX, enemyY) {
+  if(playerX === 102 && playerY === 310) {
+    console.log(`collisions ${playerX} ${playerY}`);
+
+  }
+}
