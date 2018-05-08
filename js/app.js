@@ -47,13 +47,13 @@ Enemy.prototype.render = function() {
 };
 
 // Now write your own player class
-var Player = function(x, y) {
+var Player = function(x, y, width, height) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x= x;
     this.y = y;
-    this.width = 65;
-    this.height = 75;
+    this.width = width;
+    this.height = height;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
@@ -84,7 +84,7 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(keyPressed) {
   console.log(this.x);
   console.log(this.y);
-  
+
   if(keyPressed == 'up') {
     pressUp = true;
   } else if (keyPressed == 'down') {
@@ -123,7 +123,7 @@ allEnemies.push(enemy1);
 console.log(allEnemies);
 
 // Place the player object in a variable called player
-const player = new Player(202, 400);
+const player = new Player(202, 400, 65, 75);
 
 
 
@@ -146,7 +146,7 @@ Player.prototype.checkCollisions = function(){
    player.x + player.width > allEnemies[0].x &&
    player.y < allEnemies[0].y + allEnemies[0].height &&
    player.height + player.y > allEnemies[0].y) {
-     console.log(`collisions ${player.x} ${player.y} width ${player.width} ${allEnemies[0].x}`);
+     console.log(`collisions ${player.x} ${player.y} width ${allEnemies[0].width} ${(allEnemies[0].width)+3}`);
      player.begin();
   }
 }
