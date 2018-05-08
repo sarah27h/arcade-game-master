@@ -142,10 +142,11 @@ document.addEventListener('keyup', function(e) {
 
 Player.prototype.checkCollisions = function(){
 
-  if (player.x < allEnemies[0].x + (allEnemies[0].width)-3 &&
-   player.x + player.width > allEnemies[0].x &&
-   player.y < allEnemies[0].y + allEnemies[0].height &&
-   player.height + player.y > allEnemies[0].y) {
+  if (player.x < allEnemies[0].x + allEnemies[0].width - 21 &&
+   player.x + player.width + 19 > allEnemies[0].x &&
+   player.y < allEnemies[0].y + allEnemies[0].height + 28 &&
+   player.height - 36 + player.y > allEnemies[0].y) {
+     console.log(Resources.get(this.sprite).width);
      console.log(`collisions ${player.x} ${player.y} width ${allEnemies[0].width} ${(allEnemies[0].width)+3}`);
      player.begin();
   }
@@ -156,6 +157,6 @@ Player.prototype.begin = function() {
     player.x = 202;
     player.y = 400;
 
-  }, 200);
+  }, 100);
 
 }
