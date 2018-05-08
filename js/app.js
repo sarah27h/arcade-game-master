@@ -1,15 +1,17 @@
 let pressUp = false,
-    pressRight = false;
+    pressDown = false,
+    pressRight = false,
+    pressLeft = false;
 
 
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+var Enemy = function(x, y, speed, width, height) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    this.width = 96;
-    this.height = 66;
+    this.width = width;
+    this.height = height;
     this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -50,7 +52,7 @@ var Player = function(x, y) {
     // we've provided one for you to get started
     this.x= x;
     this.y = y;
-    this.width = 66;
+    this.width = 65;
     this.height = 75;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -60,12 +62,18 @@ var Player = function(x, y) {
 // This class requires an update(), render() and
 // a handleInput() method.
 Player.prototype.update = function() {
-  if (pressRight === true && this.x <= 350 ) {
+  if (pressUp === true && this.y >= 0) {
+   this.y -= 90;
+   pressUp = false;
+ } else if (pressDown === true && this.y <= 310) {
+    this.y += 90;
+    pressDown = false;
+  } else if (pressRight === true && this.x <= 350 ) {
     this.x  += 100;
     pressRight = false;
-  } else if (pressUp === true && this.y >= 0) {
-    this.y -= 90;
-    pressUp = false;
+  } else if (pressLeft === true && this.x >= 65) {
+    this.x  -= 100;
+    pressLeft = false;
   }
 };
 
@@ -76,24 +84,21 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(keyPressed) {
   console.log(this.x);
   console.log(this.y);
+  
   if(keyPressed == 'up') {
-    // this.y -= 90;
     pressUp = true;
-  } else if (keyPressed == 'down' && this.y <= 310) {
-    this.y += 90;
+  } else if (keyPressed == 'down') {
+    pressDown = true;
   } else if (keyPressed === 'right') {
-    // 505 - 65 = 440
-    // this.x += 90;
-    // player.update();
     pressRight = true;
-  }  else if (keyPressed == 'left' && this.x >= 65) {
-    this.x -= 100;
+  }  else if (keyPressed == 'left') {
+    pressLeft = true;
   }
 
 };
 
 // Now instantiate your objects.
-const enemy1 = new Enemy(0, 60, 30);
+const enemy1 = new Enemy(0, 60, 30, 97, 65);
 // const enemy2 = new Enemy(200, 145, 200);
 // const enemy3 = new Enemy(406, 225, 300);
 
@@ -137,11 +142,11 @@ document.addEventListener('keyup', function(e) {
 
 Player.prototype.checkCollisions = function(){
 
-  if (player.x < allEnemies[0].x + allEnemies[0].width &&
+  if (player.x < allEnemies[0].x + (allEnemies[0].width)-3 &&
    player.x + player.width > allEnemies[0].x &&
    player.y < allEnemies[0].y + allEnemies[0].height &&
    player.height + player.y > allEnemies[0].y) {
-     console.log(`collisions ${player.x} ${player.y} ${allEnemies[0].x}`);
+     console.log(`collisions ${player.x} ${player.y} width ${player.width} ${allEnemies[0].x}`);
      player.begin();
   }
 }
