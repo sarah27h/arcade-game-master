@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- modal -->
+  <div id="conModal" class="modal">
+
+    <!-- modal content -->
+    <div class="modal-content">
+        <i class="fa fa-times-circle close"></i>
+        <p class="modal-text">Congratulations! You Won! :)</p>
+
+        <!-- score-panel -->
+        <div class="score-panel">
+
+            <p>With <span class="final-moves moves"> 0</span> Moves</p>
+            <p><span class="final-stars"></span> Stars</p>
+
+    </div><!-- end modal content -->
+
+  </div><!-- end modal -->
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
