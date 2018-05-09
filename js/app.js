@@ -75,6 +75,17 @@ Player.prototype.update = function() {
     this.x  -= 100;
     pressLeft = false;
   }
+
+  // check if player reach water and win
+  if (this.y === -50) {
+    console.log(`you win`);
+    console.log(this.y);
+    setTimeout(function(){
+      winModal();
+      player.begin();
+    }, 1000);
+
+  }
 };
 
 Player.prototype.render = function() {
@@ -160,3 +171,22 @@ Player.prototype.begin = function() {
   }, 100);
 
 }
+
+// modal box
+const modal = document.getElementById('conModal');
+// closes the modal
+const closeIcon = document.querySelector(".close");
+
+function winModal() {
+  console.log('congratulate  you win :)');
+  // When the user clicks the button, open the modal
+  // timer.stop();
+
+  // show win modal
+  modal.style.cssText = 'display: block';
+}
+
+// add click event to icon to close the modal
+closeIcon.addEventListener('click', function() {
+    modal.style.cssText = 'display: none';
+});
