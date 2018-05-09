@@ -63,10 +63,10 @@ var Player = function(x, y, width, height) {
 // a handleInput() method.
 Player.prototype.update = function() {
   if (pressUp === true && this.y >= 0) {
-   this.y -= 90;
+   this.y -= 83;
    pressUp = false;
  } else if (pressDown === true && this.y <= 310) {
-    this.y += 90;
+    this.y += 83;
     pressDown = false;
   } else if (pressRight === true && this.x <= 350 ) {
     this.x  += 100;
