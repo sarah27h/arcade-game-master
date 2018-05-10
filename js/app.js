@@ -30,12 +30,12 @@ Enemy.prototype.update = function(dt) {
     // prevent enemy disapper go out off canvas
     if (this.x >= 505) {
       this.x = 0;
-      if (this.y === 60) {
-        this.y = 225;
-      } else if (this.y === 225) {
+      if (this.y === 61) {
         this.y = 145;
-      } else {
-        this.y = 60;
+      } else if (this.y === 226) {
+        this.y = 61;
+      } else if (this.y === 145) {
+        this.y = 226;
       }
     }
     player.checkCollisions();
@@ -109,9 +109,9 @@ Player.prototype.handleInput = function(keyPressed) {
 };
 
 // Now instantiate your objects.
-const enemy1 = new Enemy(0, 60, 30, 97, 65);
-// const enemy2 = new Enemy(200, 145, 200);
-// const enemy3 = new Enemy(406, 225, 300);
+const enemy1 = new Enemy(0, 61, 200, 97, 65);
+const enemy2 = new Enemy(200, 145, 100, 97, 65);
+const enemy3 = new Enemy(406, 226, 150, 97, 65);
 
 // function enemyArray(enemyNum) {
 // 	const allEnemies = [];
@@ -128,13 +128,13 @@ const enemy1 = new Enemy(0, 60, 30, 97, 65);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
 allEnemies.push(enemy1);
-// allEnemies.push(enemy2);
-// allEnemies.push(enemy3);
+allEnemies.push(enemy2);
+allEnemies.push(enemy3);
 
 console.log(allEnemies);
 
 // Place the player object in a variable called player
-const player = new Player(202, 400, 65, 75);
+const player = new Player(202, 404, 65, 75);
 
 
 
@@ -152,21 +152,32 @@ document.addEventListener('keyup', function(e) {
 });
 
 Player.prototype.checkCollisions = function(){
+  for (const enemy of allEnemies) {
+    if (player.x < enemy.x + enemy.width &&
+     player.x + player.width > enemy.x &&
+     player.y < enemy.y + enemy.height &&
+     player.height + 412 + player.y > enemy.y) {
+       console.log(Resources.get(this.sprite).width);
+       console.log(`collisions ${player.x} ${player.y} ${enemy.x} ${enemy.y} ${player.height + player.y}`);
+       player.begin();
+    }
 
-  if (player.x < allEnemies[0].x + allEnemies[0].width - 21 &&
-   player.x + player.width + 19 > allEnemies[0].x &&
-   player.y < allEnemies[0].y + allEnemies[0].height + 28 &&
-   player.height - 36 + player.y > allEnemies[0].y) {
-     console.log(Resources.get(this.sprite).width);
-     console.log(`collisions ${player.x} ${player.y} width ${allEnemies[0].width} ${(allEnemies[0].width)+3}`);
-     player.begin();
+    // if (player.x < enemy.x + enemy.width - 21 &&
+    //  player.x + player.width - 21 > enemy.x &&
+    //  player.y < enemy.y + enemy.height + 28 &&
+    //  player.height - 36 + player.y > enemy.y) {
+    //    console.log(Resources.get(this.sprite).width);
+    //    console.log(`collisions ${player.x} ${player.y} width ${allEnemies[1].width} ${(allEnemies[1].width)+3}`);
+    //    player.begin();
+    // }
   }
+
 }
 
 Player.prototype.begin = function() {
   setTimeout(function(){
     player.x = 202;
-    player.y = 400;
+    player.y = 404;
 
   }, 100);
 
