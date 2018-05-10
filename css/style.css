@@ -1,6 +1,51 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 body {
     text-align: center;
 }
+
+
+/*
+ * Styles for player-panel
+ */
+
+/* player-panel */
+.player-panel {
+    display: flex;
+    width: 400px;
+    margin: 0 auto;
+    background: #eee;
+    border-radius: 15px;
+    margin-bottom: -40px;
+    padding: 10px 0;
+}
+
+.player-panel p {
+    margin: 0;
+}
+
+.player-panel .lives {
+    width: 50%;
+}
+
+.player-panel .lives img {
+    width: 15%;
+}
+
+.player-panel .score {
+    width: 50%;
+}
+
+.player-panel .player-score {
+		margin-top: 6px;
+    font-size: 36px;
+}
+
 
 /*
  * Styles for win modal
@@ -32,7 +77,7 @@ body {
 }
 
 .modal p {
-  margin-top: 8px;
+    margin-top: 8px;
 }
 
 .modal .close {
