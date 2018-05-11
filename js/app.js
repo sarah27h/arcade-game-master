@@ -34,11 +34,11 @@ Enemy.prototype.update = function(dt) {
     // prevent enemy disapper go out off canvas
     if (this.x >= 505) {
       this.x = 0;
-      if (this.y === 61) {
-        this.y = 145;
-      } else if (this.y === 226) {
-        this.y = 61;
-      } else if (this.y === 145) {
+      if (this.y === 63) {
+        this.y = 146;
+      } else if (this.y === 229) {
+        this.y = 63;
+      } else if (this.y === 146) {
         this.y = 226;
       }
     }
@@ -115,9 +115,9 @@ Player.prototype.handleInput = function(keyPressed) {
 };
 
 // Now instantiate your objects.
-const enemy1 = new Enemy(0, 61, 200, 97, 65);
-const enemy2 = new Enemy(200, 145, 100, 97, 65);
-const enemy3 = new Enemy(406, 226, 150, 97, 65);
+const enemy1 = new Enemy(202, 63, 100, 97, 65);
+const enemy2 = new Enemy(200, 146, 120, 97, 65);
+const enemy3 = new Enemy(406, 229, 150, 97, 65);
 
 // function enemyArray(enemyNum) {
 // 	const allEnemies = [];
@@ -159,10 +159,10 @@ document.addEventListener('keyup', function(e) {
 
 Player.prototype.checkCollisions = function(){
   for (const enemy of allEnemies) {
-    if (player.x < enemy.x + enemy.width &&
-     player.x + player.width > enemy.x &&
-     player.y < enemy.y + enemy.height &&
-     player.height + 412 + player.y > enemy.y) {
+    if (player.x < enemy.x + enemy.width - 20 &&
+     player.x + player.width + 20 > enemy.x &&
+     player.y < enemy.y + enemy.height + 15 &&
+     player.height - 15 + player.y > enemy.y) {
        console.log(Resources.get(this.sprite).width);
        console.log(`collisions ${player.x} ${player.y} ${enemy.x} ${enemy.y} ${player.height + player.y}`);
        player.begin();
@@ -217,7 +217,6 @@ function updateLives() {
     hearts[0].style.cssText = 'visibility: hidden';
   } else if (collisionCounter === 2) {
     hearts[1].style.cssText = 'visibility: hidden';
-
   } else if (collisionCounter === 3) {
     hearts[2].style.cssText = 'visibility: hidden';
   }
