@@ -1,3 +1,7 @@
+/*
+ * General
+ */
+
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -9,6 +13,9 @@ body {
     text-align: center;
 }
 
+.hide {
+	visibility: hidden;
+}
 
 /*
  * Styles for player-panel
@@ -33,7 +40,7 @@ body {
     width: 50%;
 }
 
-.player-panel .lives img {
+.player-panel .lives .heart {
     width: 15%;
 }
 

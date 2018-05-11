@@ -1,8 +1,12 @@
+// Variables
 let pressUp = false,
     pressDown = false,
     pressRight = false,
     pressLeft = false;
 
+let collisionCounter = 0;
+
+const hearts = document.querySelectorAll('.heart');
 
 // Enemies our player must avoid
 var Enemy = function(x, y, speed, width, height) {
@@ -39,6 +43,7 @@ Enemy.prototype.update = function(dt) {
       }
     }
     player.checkCollisions();
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -77,14 +82,15 @@ Player.prototype.update = function() {
   }
 
   // check if player reach water and win
-  if (this.y === -50) {
+  if (this.y === -11) {
     console.log(`you win`);
     console.log(this.y);
+    winModal();
     setTimeout(function(){
-      winModal();
-      player.begin();
-    }, 1000);
 
+      player.begin();
+      collisionCounter = 0;
+    }, 500);
   }
 };
 
@@ -128,8 +134,8 @@ const enemy3 = new Enemy(406, 226, 150, 97, 65);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
 allEnemies.push(enemy1);
-allEnemies.push(enemy2);
-allEnemies.push(enemy3);
+// allEnemies.push(enemy2);
+// allEnemies.push(enemy3);
 
 console.log(allEnemies);
 
@@ -175,11 +181,13 @@ Player.prototype.checkCollisions = function(){
 }
 
 Player.prototype.begin = function() {
-  setTimeout(function(){
+  // setTimeout(function(){
     player.x = 202;
     player.y = 404;
-
-  }, 100);
+    collisionCounter++;
+    updateLives();
+    console.log(`${collisionCounter} collisionCounter`);
+  // }, 100);
 
 }
 
@@ -201,3 +209,16 @@ function winModal() {
 closeIcon.addEventListener('click', function() {
     modal.style.cssText = 'display: none';
 });
+
+function updateLives() {
+  if (collisionCounter === 1) {
+    console.log(`heart must remove`);
+    console.log(hearts);
+    hearts[0].style.cssText = 'visibility: hidden';
+  } else if (collisionCounter === 2) {
+    hearts[1].style.cssText = 'visibility: hidden';
+
+  } else if (collisionCounter === 3) {
+    hearts[2].style.cssText = 'visibility: hidden';
+  }
+}
