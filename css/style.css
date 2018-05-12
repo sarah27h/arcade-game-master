@@ -10,7 +10,13 @@
 }
 
 body {
+		font-family: Montserrat,sans-serif;
     text-align: center;
+}
+
+.container {
+	width: 800px;
+	margin: auto;
 }
 
 .hide {
@@ -55,6 +61,32 @@ body {
 
 
 /*
+ * Styles for player selectorModal
+ */
+
+#selectorModal {
+		display: block;
+}
+
+ #selectorModal .modal-content p {
+		font-size: 20px;
+ }
+
+ #selectorModal .player-selector {
+ 		padding: 40px 20px;
+ }
+
+#selectorModal .player-selector .player-img {
+		margin-right: 20px;
+    max-width: 100%;
+}
+
+#selectorModal .player-selector :last-child {
+		margin-right: 0;
+}
+
+
+/*
  * Styles for win modal
  */
 
@@ -74,7 +106,7 @@ body {
 
 .modal .modal-content {
     background-color: #fefefe;
-    margin: 25% auto;
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
@@ -108,13 +140,22 @@ body {
     color: #519a5b;
 }
 
-.modal .replayBtn {
+.modal .replayBtn,
+.modal .startBtn {
     padding: 15px 20px;
     border: none;
-    background-color: #02ccba;
+    background-color: #455bbf;
     color: #fff;
     border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.modal .replayBtn:focus,
+.modal .replayBtn:hover,
+.modal .startBtn:focus,
+.modal .startBtn:hover {
+		background: #212a55;
+		transition: all .2s ease;
 }

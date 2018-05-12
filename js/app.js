@@ -8,10 +8,14 @@ let collisionCounter = 0;
 
 const hearts = document.querySelectorAll('.heart');
 const replayBtn = document.querySelector('.replayBtn');
+const startBtn = document.querySelector('.startBtn');
+const closeIcon = document.querySelector(".close");
 const playerScore = document.querySelector('.player-score');
 const modalScore = document.querySelector('.modal-score');
 const modalMsg1 = document.querySelector('.modal-text1');
 const modalMsg2 = document.querySelector('.modal-text2');
+const finalGameModal = document.getElementById('gameModal');
+const selectorModal = document.getElementById('selectorModal');
 
 
 // Enemies our player must avoid
@@ -82,7 +86,7 @@ Player.prototype.update = function() {
   } else if (pressLeft === true && this.x >= 65) {
     this.x  -= 100;
   }
-  
+
   pressUp = false;
   pressDown = false;
   pressRight = false;
@@ -92,7 +96,7 @@ Player.prototype.update = function() {
   if (this.y === 51) {
     console.log(`you win`);
     console.log(this.y);
-    gameModal();
+    showGameModal();
   }
 
   player.checkCollisions();
@@ -184,12 +188,7 @@ Player.prototype.begin = function() {
     console.log(`${collisionCounter} collisionCounter`);
 }
 
-// modal box
-const modal = document.getElementById('conModal');
-// closes the modal
-const closeIcon = document.querySelector(".close");
-
-function gameModal() {
+function showGameModal() {
   console.log('congratulate  you win :)');
   // When the user clicks the button, open the modal
   // timer.stop();
@@ -202,7 +201,7 @@ function gameModal() {
     modalMsg1.innerHTML = 'Game Over :)';
     modalMsg2.innerHTML = '';
   }
-  modal.style.cssText = 'display: block';
+  finalGameModal.style.cssText = 'display: block';
   modalScore.innerHTML = playerScore.innerHTML;
   console.log(playerScore.innerHTML, modalScore.innerHTML);
 
@@ -210,25 +209,35 @@ function gameModal() {
 
 // add click event to icon to close the modal
 closeIcon.addEventListener('click', function() {
-    modal.style.cssText = 'display: none';
+    finalGameModal.style.cssText = 'display: none';
 });
 
 // add click event to window any click outside of the modal close it
 window.addEventListener('click', function(evt) {
     if (evt.target == modal) {
-        modal.style.cssText = 'display: none';
+        finalGameModal.style.cssText = 'display: none';
     }
+});
+
+// show player-selector modal every time the browser reloads
+window.addEventListener("load", function() {
+
+});
+
+startBtn.addEventListener('click', function() {
+  selectorModal.style.cssText = 'display: none';
 });
 
 replayBtn.addEventListener('click',resetGame);
 
 function resetGame() {
-    player.begin();
-    collisionCounter = 0;
+  player.begin();
+  collisionCounter = 0;
   for (heart of hearts) {
     heart.style.cssText = 'visibility: visible';
   }
-  modal.style.cssText = 'display: none';
+  finalGameModal.style.cssText = 'display: none';
+  selectorModal.style.cssText = 'display: block';
   playerScore.innerHTML = '0';
 }
 
@@ -241,7 +250,7 @@ function updateLives() {
     hearts[1].style.cssText = 'visibility: hidden';
   } else if (collisionCounter === 3) {
     hearts[2].style.cssText = 'visibility: hidden';
-    gameModal();
+    showGameModal();
     console.log('game over');
   }
 }
