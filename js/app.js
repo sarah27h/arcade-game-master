@@ -7,6 +7,10 @@ let pressUp = false,
 let collisionCounter = 0;
 
 const hearts = document.querySelectorAll('.heart');
+const replayBtn = document.querySelector('.replayBtn');
+const playerScore = document.querySelector('.player-score');
+const modalScore = document.querySelector('.modal-score');
+
 
 // Enemies our player must avoid
 var Enemy = function(x, y, speed, width, height) {
@@ -84,7 +88,7 @@ Player.prototype.update = function() {
   player.checkCollisions();
 
   // check if player reach water and win
-  if (this.y === -11) {
+  if (this.y === 51) {
     console.log(`you win`);
     console.log(this.y);
     winModal();
@@ -205,12 +209,31 @@ function winModal() {
 
   // show win modal
   modal.style.cssText = 'display: block';
+  modalScore.innerHTML = playerScore.innerHTML;
+  console.log(playerScore.innerHTML, modalScore.innerHTML);
 }
 
 // add click event to icon to close the modal
 closeIcon.addEventListener('click', function() {
     modal.style.cssText = 'display: none';
 });
+
+// add click event to window any click outside of the modal close it
+window.addEventListener('click', function(evt) {
+    if (evt.target == modal) {
+        modal.style.cssText = 'display: none';
+    }
+});
+
+replayBtn.addEventListener('click',resetGame);
+
+function resetGame() {
+  for (heart of hearts) {
+    heart.style.cssText = 'visibility: visible';
+  }
+  modal.style.cssText = 'display: none';
+  playerScore.innerHTML = '0';
+}
 
 function updateLives() {
   if (collisionCounter === 1) {

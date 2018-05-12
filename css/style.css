@@ -107,18 +107,6 @@ body {
     color: #519a5b;
 }
 
-.modal .score-panel {
-    width: 358px;
-    text-align: center;
-    margin: auto;
-}
-
-.modal .score-panel #timeRecord {
-    margin: 10px 0;
-    float: none;
-    margin-right: 0;
-}
-
 .modal .replayBtn {
     padding: 15px 20px;
     border: none;
