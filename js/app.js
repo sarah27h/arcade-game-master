@@ -92,11 +92,11 @@ Player.prototype.update = function() {
     console.log(`you win`);
     console.log(this.y);
     winModal();
-    setTimeout(function(){
-
-      player.begin();
-      collisionCounter = 0;
-    }, 500);
+    // setTimeout(function(){
+    //
+    //   player.begin();
+    //   collisionCounter = 0;
+    // }, 500);
   }
 };
 
@@ -211,6 +211,7 @@ function winModal() {
   modal.style.cssText = 'display: block';
   modalScore.innerHTML = playerScore.innerHTML;
   console.log(playerScore.innerHTML, modalScore.innerHTML);
+
 }
 
 // add click event to icon to close the modal
@@ -228,6 +229,8 @@ window.addEventListener('click', function(evt) {
 replayBtn.addEventListener('click',resetGame);
 
 function resetGame() {
+    player.begin();
+    collisionCounter = 0;
   for (heart of hearts) {
     heart.style.cssText = 'visibility: visible';
   }
