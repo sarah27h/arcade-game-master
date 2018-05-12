@@ -73,28 +73,29 @@ var Player = function(x, y, width, height) {
 // This class requires an update(), render() and
 // a handleInput() method.
 Player.prototype.update = function() {
-  if (pressUp === true && this.y >= 0) {
+  if (pressUp === true && this.y >= 133) {
    this.y -= 83;
-   pressUp = false;
- } else if (pressDown === true && this.y <= 310) {
+ } else if (pressDown === true && this.y <= 465) {
     this.y += 83;
-    pressDown = false;
   } else if (pressRight === true && this.x <= 350 ) {
     this.x  += 100;
-    pressRight = false;
   } else if (pressLeft === true && this.x >= 65) {
     this.x  -= 100;
-    pressLeft = false;
   }
-
-  player.checkCollisions();
+  
+  pressUp = false;
+  pressDown = false;
+  pressRight = false;
+  pressLeft = false;
 
   // check if player reach water and win
   if (this.y === 51) {
     console.log(`you win`);
     console.log(this.y);
-    winModal();
+    gameModal();
   }
+
+  player.checkCollisions();
 };
 
 Player.prototype.render = function() {
@@ -168,6 +169,7 @@ Player.prototype.checkCollisions = function(){
      player.height + player.y > enemy.y) {
        console.log(Resources.get(this.sprite).width);
        console.log(`collisions ${player.x} ${player.y} ${enemy.x} ${enemy.y} ${player.height + player.y}`);
+       collisionCounter++;
        player.begin();
     }
   }
@@ -177,7 +179,7 @@ Player.prototype.checkCollisions = function(){
 Player.prototype.begin = function() {
     player.x = 220;
     player.y = 466;
-    collisionCounter++;
+
     updateLives();
     console.log(`${collisionCounter} collisionCounter`);
 }
@@ -187,7 +189,7 @@ const modal = document.getElementById('conModal');
 // closes the modal
 const closeIcon = document.querySelector(".close");
 
-function winModal() {
+function gameModal() {
   console.log('congratulate  you win :)');
   // When the user clicks the button, open the modal
   // timer.stop();
@@ -239,7 +241,7 @@ function updateLives() {
     hearts[1].style.cssText = 'visibility: hidden';
   } else if (collisionCounter === 3) {
     hearts[2].style.cssText = 'visibility: hidden';
-    winModal();
+    gameModal();
     console.log('game over');
   }
 }

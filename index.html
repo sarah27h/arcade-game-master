@@ -8,39 +8,52 @@
 </head>
 <body>
 
-  <!-- player-panel -->
-  <div class= "player-panel">
-    <div class="lives">
-      <p>Lives</p>
-      <img class="heart" src="images\Heart.png" alt="heart player lives">
-      <img class="heart" src="images\Heart.png" alt="heart player lives">
-      <img class="heart" src="images\Heart.png" alt="heart player lives">
+  <div class="container">
+    <!-- player-panel -->
+    <div class= "player-panel">
+      <div class="lives">
+        <p>Lives</p>
+        <img class="heart" src="images\Heart.png" alt="heart player lives">
+        <img class="heart" src="images\Heart.png" alt="heart player lives">
+        <img class="heart" src="images\Heart.png" alt="heart player lives">
+      </div>
+      <div class="score">
+        <p>Score</p>
+        <p class="player-score">100</p>
+      </div>
     </div>
-    <div class="score">
-      <p>Score</p>
-      <p class="player-score">100</p>
+    <!-- end player-panel -->
+
+
+    <!-- player-selector -->
+    <div class= "player-selector">
+      <p>Choose Player</p>
+        <img class="player-img" src="images\char-boy-s.png" alt="">
+        <img class="player-img" src="images\char-cat-girl.png" alt="">
+        <img class="player-img" src="images\char-horn-girl.png" alt="">
+        <img class="player-img" src="images\char-pink-girl.png" alt="">
     </div>
+    <!-- end player-selector -->
+    
+
+    <!-- modal -->
+    <div id="conModal" class="modal">
+
+      <!-- modal content -->
+      <div class="modal-content">
+          <i class="fa fa-times-circle close"></i>
+          <p class="modal-text1">You Reach Water! :)</p>
+          <p class="modal-text2">Congratulations!</p>
+          <!-- score-panel -->
+          <div class="score-panel">
+              <p>Your Score <span class="modal-score"> 0</span></p>
+          </div><!-- end score-panel -->
+          <button class="replayBtn">Play again!</button>
+
+      </div><!-- end modal content -->
+
+    </div><!-- end modal -->
   </div>
-  <!-- end player-panel -->
-
-  <!-- modal -->
-  <div id="conModal" class="modal">
-
-    <!-- modal content -->
-    <div class="modal-content">
-        <i class="fa fa-times-circle close"></i>
-        <p class="modal-text1">You Reach Water! :)</p>
-        <p class="modal-text2">Congratulations!</p>
-        <!-- score-panel -->
-        <div class="score-panel">
-            <p>Your Score <span class="modal-score"> 0</span></p>
-        </div><!-- end score-panel -->
-        <button class="replayBtn">Play again!</button>
-
-    </div><!-- end modal content -->
-
-  </div><!-- end modal -->
-
   <!-- scripts -->
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
