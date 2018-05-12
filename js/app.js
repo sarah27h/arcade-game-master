@@ -10,6 +10,8 @@ const hearts = document.querySelectorAll('.heart');
 const replayBtn = document.querySelector('.replayBtn');
 const playerScore = document.querySelector('.player-score');
 const modalScore = document.querySelector('.modal-score');
+const modalMsg1 = document.querySelector('.modal-text1');
+const modalMsg2 = document.querySelector('.modal-text2');
 
 
 // Enemies our player must avoid
@@ -191,6 +193,13 @@ function winModal() {
   // timer.stop();
 
   // show win modal
+  if (collisionCounter <= 2) {
+    modalMsg1.innerHTML = 'You Reach Water! :)';
+    modalMsg2.innerHTML = 'Congratulations!';
+  } else if (collisionCounter === 3){
+    modalMsg1.innerHTML = 'Game Over :)';
+    modalMsg2.innerHTML = '';
+  }
   modal.style.cssText = 'display: block';
   modalScore.innerHTML = playerScore.innerHTML;
   console.log(playerScore.innerHTML, modalScore.innerHTML);
@@ -230,5 +239,7 @@ function updateLives() {
     hearts[1].style.cssText = 'visibility: hidden';
   } else if (collisionCounter === 3) {
     hearts[2].style.cssText = 'visibility: hidden';
+    winModal();
+    console.log('game over');
   }
 }

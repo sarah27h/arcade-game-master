@@ -101,7 +101,8 @@ body {
     cursor: pointer;
 }
 
-.modal .modal-text {
+.modal .modal-text1,
+ .modal .modal-text2 {
     font-size: 20px;
     font-weight: bold;
     color: #519a5b;
