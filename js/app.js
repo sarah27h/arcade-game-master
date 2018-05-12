@@ -19,7 +19,7 @@ var Enemy = function(x, y, speed, width, height) {
     this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'images/enemy-bug-s.png';
 };
 
 // Update the enemy's position, required method for game
@@ -34,12 +34,12 @@ Enemy.prototype.update = function(dt) {
     // prevent enemy disapper go out off canvas
     if (this.x >= 505) {
       this.x = 0;
-      if (this.y === 63) {
-        this.y = 146;
-      } else if (this.y === 229) {
-        this.y = 63;
-      } else if (this.y === 146) {
-        this.y = 226;
+      if (this.y === 137) {
+        this.y = 220;
+      } else if (this.y === 303) {
+        this.y = 137;
+      } else if (this.y === 220) {
+        this.y = 303;
       }
     }
     player.checkCollisions();
@@ -61,7 +61,7 @@ var Player = function(x, y, width, height) {
     this.height = height;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/char-boy-s.png';
 };
 
 // This class requires an update(), render() and
@@ -115,9 +115,9 @@ Player.prototype.handleInput = function(keyPressed) {
 };
 
 // Now instantiate your objects.
-const enemy1 = new Enemy(202, 63, 100, 97, 65);
-const enemy2 = new Enemy(200, 146, 120, 97, 65);
-const enemy3 = new Enemy(406, 229, 150, 97, 65);
+const enemy1 = new Enemy(202, 137, 100, 97, 65);
+const enemy2 = new Enemy(200, 220, 120, 97, 65);
+const enemy3 = new Enemy(406, 303, 150, 97, 65);
 
 // function enemyArray(enemyNum) {
 // 	const allEnemies = [];
@@ -134,13 +134,13 @@ const enemy3 = new Enemy(406, 229, 150, 97, 65);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
 allEnemies.push(enemy1);
-// allEnemies.push(enemy2);
-// allEnemies.push(enemy3);
+allEnemies.push(enemy2);
+allEnemies.push(enemy3);
 
 console.log(allEnemies);
 
 // Place the player object in a variable called player
-const player = new Player(202, 404, 65, 75);
+const player = new Player(220, 466, 65, 75);
 
 
 
@@ -159,10 +159,10 @@ document.addEventListener('keyup', function(e) {
 
 Player.prototype.checkCollisions = function(){
   for (const enemy of allEnemies) {
-    if (player.x < enemy.x + enemy.width - 20 &&
-     player.x + player.width + 20 > enemy.x &&
-     player.y < enemy.y + enemy.height + 15 &&
-     player.height - 15 + player.y > enemy.y) {
+    if (player.x < enemy.x + enemy.width&&
+     player.x + player.width> enemy.x &&
+     player.y < enemy.y + enemy.height &&
+     player.height + player.y > enemy.y) {
        console.log(Resources.get(this.sprite).width);
        console.log(`collisions ${player.x} ${player.y} ${enemy.x} ${enemy.y} ${player.height + player.y}`);
        player.begin();
@@ -182,8 +182,8 @@ Player.prototype.checkCollisions = function(){
 
 Player.prototype.begin = function() {
   // setTimeout(function(){
-    player.x = 202;
-    player.y = 404;
+    player.x = 220;
+    player.y = 466;
     collisionCounter++;
     updateLives();
     console.log(`${collisionCounter} collisionCounter`);
