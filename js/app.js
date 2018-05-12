@@ -42,7 +42,7 @@ Enemy.prototype.update = function(dt) {
         this.y = 303;
       }
     }
-    player.checkCollisions();
+
 
 };
 
@@ -80,6 +80,8 @@ Player.prototype.update = function() {
     this.x  -= 100;
     pressLeft = false;
   }
+
+  player.checkCollisions();
 
   // check if player reach water and win
   if (this.y === -11) {
