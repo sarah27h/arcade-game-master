@@ -16,6 +16,10 @@ const modalMsg1 = document.querySelector('.modal-text1');
 const modalMsg2 = document.querySelector('.modal-text2');
 const finalGameModal = document.getElementById('gameModal');
 const selectorModal = document.getElementById('selectorModal');
+const playerImage = document.querySelector('.player-img');
+let src = playerImage.getAttribute('src');
+let res = '';
+console.log(src);
 
 
 // Enemies our player must avoid
@@ -62,7 +66,7 @@ Enemy.prototype.render = function() {
 };
 
 // Now write your own player class
-var Player = function(x, y, width, height) {
+var Player = function(x, y, width, height, sprite) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x= x;
@@ -71,7 +75,7 @@ var Player = function(x, y, width, height) {
     this.height = height;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/char-boy-s.png';
+    this.sprite = sprite;
 };
 
 // This class requires an update(), render() and
@@ -148,7 +152,7 @@ allEnemies.push(enemy3);
 console.log(allEnemies);
 
 // Place the player object in a variable called player
-const player = new Player(220, 466, 65, 75);
+const player = new Player(220, 466, 65, 75, 'images/char-boy-s.png');
 
 
 
@@ -214,7 +218,7 @@ closeIcon.addEventListener('click', function() {
 
 // add click event to window any click outside of the modal close it
 window.addEventListener('click', function(evt) {
-    if (evt.target == modal) {
+    if (evt.target == finalGameModal) {
         finalGameModal.style.cssText = 'display: none';
     }
 });
@@ -226,6 +230,17 @@ window.addEventListener("load", function() {
 
 startBtn.addEventListener('click', function() {
   selectorModal.style.cssText = 'display: none';
+});
+
+selectorModal.addEventListener('click', function(e) {
+  if (e.target.nodeName.toLowerCase() === 'img') {
+    src = e.target.getAttribute('src');
+
+    res = src.replace('\\', '/');
+    player.sprite = res;
+    console.log(res);
+    // console.log(Player.sprite);
+  }
 });
 
 replayBtn.addEventListener('click',resetGame);
