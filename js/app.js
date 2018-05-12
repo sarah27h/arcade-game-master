@@ -92,11 +92,6 @@ Player.prototype.update = function() {
     console.log(`you win`);
     console.log(this.y);
     winModal();
-    // setTimeout(function(){
-    //
-    //   player.begin();
-    //   collisionCounter = 0;
-    // }, 500);
   }
 };
 
@@ -173,28 +168,16 @@ Player.prototype.checkCollisions = function(){
        console.log(`collisions ${player.x} ${player.y} ${enemy.x} ${enemy.y} ${player.height + player.y}`);
        player.begin();
     }
-
-    // if (player.x < enemy.x + enemy.width - 21 &&
-    //  player.x + player.width - 21 > enemy.x &&
-    //  player.y < enemy.y + enemy.height + 28 &&
-    //  player.height - 36 + player.y > enemy.y) {
-    //    console.log(Resources.get(this.sprite).width);
-    //    console.log(`collisions ${player.x} ${player.y} width ${allEnemies[1].width} ${(allEnemies[1].width)+3}`);
-    //    player.begin();
-    // }
   }
 
 }
 
 Player.prototype.begin = function() {
-  // setTimeout(function(){
     player.x = 220;
     player.y = 466;
     collisionCounter++;
     updateLives();
     console.log(`${collisionCounter} collisionCounter`);
-  // }, 100);
-
 }
 
 // modal box
