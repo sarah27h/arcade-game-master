@@ -212,15 +212,14 @@ function showGameModal() {
 }
 
 // add click event to icon to close the modal
-closeIcon.addEventListener('click', function() {
-    finalGameModal.style.cssText = 'display: none';
-});
+closeIcon.addEventListener('click', resetGame);
 
 // add click event to window any click outside of the modal close it
 window.addEventListener('click', function(evt) {
     if (evt.target == finalGameModal) {
-        finalGameModal.style.cssText = 'display: none';
+        resetGame();
     }
+
 });
 
 // show player-selector modal every time the browser reloads
