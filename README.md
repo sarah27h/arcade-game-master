@@ -3,12 +3,12 @@ frontend-nanodegree-arcade-game
 
 ## Table of Contents
 
-* [Direct Link](#directlink)
-* [Load Game](#loadgame)
+* [Direct Link](#direct-link)
+* [Load Game](#load-game)
 * [Instructions](#instructions)
-* [Code Sources](#CodeSources)
-* [Font icon](#FontIcon)
-* [License](#License)
+* [Code Sources](#Code-sources)
+* [Font icon](#font-icon)
+* [License](#license)
 
 ## Direct Link
 https://sarah27h.github.io/arcade-game-master/
