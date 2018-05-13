@@ -11,6 +11,7 @@ const replayBtn = document.querySelector('.replayBtn');
 const startBtn = document.querySelector('.startBtn');
 const closeIcon = document.querySelector(".close");
 const playerScore = document.querySelector('.player-score');
+let score = 0;
 const modalScore = document.querySelector('.modal-score');
 const modalMsg1 = document.querySelector('.modal-text1');
 const modalMsg2 = document.querySelector('.modal-text2');
@@ -101,8 +102,8 @@ Player.prototype.update = function() {
     console.log(`you win`);
     console.log(this.y);
     showGameModal();
+    player.begin();
   }
-
   player.checkCollisions();
 };
 
@@ -199,11 +200,24 @@ function showGameModal() {
 
   // show win modal
   if (collisionCounter <= 2) {
+    score += 200;
+    console.log(score.toString());
+    playerScore.innerHTML = score.toString();
+    console.log(score);
     modalMsg1.innerHTML = 'You Reach Water! :)';
     modalMsg2.innerHTML = 'Congratulations!';
+    document.removeEventListener('keyup', function(e) {
+        var allowedKeys = {
+            37: 'left',
+            38: 'up',
+            39: 'right',
+            40: 'down'
+        };
+      });
   } else if (collisionCounter === 3){
-    modalMsg1.innerHTML = 'Game Over :)';
+    modalMsg1.innerHTML = 'Game Over ):';
     modalMsg2.innerHTML = '';
+    playerScore.innerHTML = '0';
   }
   finalGameModal.style.cssText = 'display: block';
   modalScore.innerHTML = playerScore.innerHTML;
@@ -260,6 +274,7 @@ replayBtn.addEventListener('click',resetGame);
 function resetGame() {
   player.begin();
   collisionCounter = 0;
+  score = 0;
   for (heart of hearts) {
     heart.style.cssText = 'visibility: visible';
   }
