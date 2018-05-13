@@ -23,6 +23,7 @@ body {
 	visibility: hidden;
 }
 
+
 /*
  * Styles for player-panel
  */
@@ -78,8 +79,24 @@ body {
 
 #selectorModal .player-selector .player-img {
 		margin-right: 20px;
-    max-width: 100%;
+		margin-bottom: 10px;
+    width: 66px;
+		height: 81px;
+		border-radius: 100%;
+		background: transparent;
+		transition: all .2s ease;
+		cursor: pointer;
+		outline: none;
 }
+
+#selectorModal .player-selector .player-img:hover,
+#selectorModal .player-selector .player-img:focus {
+
+	box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
+	-moz-box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
+	-webkit-box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
+	-o-box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
+ }
 
 #selectorModal .player-selector :last-child {
 		margin-right: 0;
@@ -124,6 +141,7 @@ body {
     float: right;
     font-size: 28px;
     font-weight: bold;
+		outline: none;
 }
 
 .modal .close:hover,
@@ -131,13 +149,17 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
+		box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
+		-moz-box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
+		-webkit-box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
+		-o-box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
 }
 
 .modal .modal-text1,
  .modal .modal-text2 {
     font-size: 20px;
     font-weight: bold;
-    color: #519a5b;
+    color: #ce2cae;
 }
 
 .modal .replayBtn,
@@ -150,6 +172,7 @@ body {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+		outline: none;
 }
 
 .modal .replayBtn:focus,
@@ -157,5 +180,9 @@ body {
 .modal .startBtn:focus,
 .modal .startBtn:hover {
 		background: #212a55;
+		box-shadow: 0px 0px  10px rgb(16, 63, 106);
+		-moz-box-shadow: 0px 0px  10px rgb(16, 63, 106);
+		-webkit-box-shadow: 0px 0px  10px rgb(16, 63, 106);
+		-o-box-shadow: 0px 0px  10px rgb(16, 63, 106);
 		transition: all .2s ease;
 }
