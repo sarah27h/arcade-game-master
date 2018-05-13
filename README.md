@@ -6,7 +6,6 @@ frontend-nanodegree-arcade-game
 * [Direct Link](#directlink)
 * [Load Game](#loadgame)
 * [Instructions](#instructions)
-* [Contributing](#contributing)
 * [Code Sources](#CodeSources)
 * [Font icon](#FontIcon)
 * [License](#License)
@@ -38,7 +37,7 @@ At game start, you will find a select player modal
 
 ## Font icon
 
-    - fontawesome.com
+  - fontawesome.com
 
 ## License
 
