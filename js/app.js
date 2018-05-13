@@ -159,16 +159,18 @@ const player = new Player(220, 466, 65, 75, 'images/char-boy-s.png');
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', arrowKey);
+
+// arrowKey()
+function arrowKey(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
-});
+  }
 
 Player.prototype.checkCollisions = function(){
   for (const enemy of allEnemies) {
@@ -206,14 +208,6 @@ function showGameModal() {
     console.log(score);
     modalMsg1.innerHTML = 'You Reach Water! :)';
     modalMsg2.innerHTML = 'Congratulations!';
-    document.removeEventListener('keyup', function(e) {
-        var allowedKeys = {
-            37: 'left',
-            38: 'up',
-            39: 'right',
-            40: 'down'
-        };
-      });
   } else if (collisionCounter === 3){
     modalMsg1.innerHTML = 'Game Over ):';
     modalMsg2.innerHTML = '';
@@ -222,7 +216,7 @@ function showGameModal() {
   finalGameModal.style.cssText = 'display: block';
   modalScore.innerHTML = playerScore.innerHTML;
   console.log(playerScore.innerHTML, modalScore.innerHTML);
-
+  document.removeEventListener('keyup', arrowKey);
 }
 
 // add click event to icon to close the modal
@@ -281,6 +275,7 @@ function resetGame() {
   finalGameModal.style.cssText = 'display: none';
   selectorModal.style.cssText = 'display: block';
   playerScore.innerHTML = '0';
+  document.addEventListener('keyup', arrowKey);
 }
 
 function updateLives() {
