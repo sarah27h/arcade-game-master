@@ -69,13 +69,14 @@ body {
 		display: block;
 }
 
- #selectorModal .modal-content p {
-		font-size: 20px;
- }
-
  #selectorModal .player-selector {
  		padding: 40px 20px;
  }
+
+#selectorModal .key {
+		color: #455bbf;
+    font-weight: bold;
+}
 
 #selectorModal .player-selector .player-img {
 		margin-right: 20px;
