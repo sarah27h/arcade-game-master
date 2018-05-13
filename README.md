@@ -6,7 +6,7 @@ frontend-nanodegree-arcade-game
 * [Direct Link](#direct-link)
 * [Load Game](#load-game)
 * [Instructions](#instructions)
-* [Code Sources](#Code-sources)
+* [Code Sources](#code-sources)
 * [Font icon](#font-icon)
 * [License](#license)
 
