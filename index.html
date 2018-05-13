@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+  <!-- container -->
   <div class="container">
+
     <!-- player-panel -->
     <div class= "player-panel">
       <div class="lives">
@@ -24,15 +25,16 @@
     </div>
     <!-- end player-panel -->
 
+
     <!-- player-selector-modal -->
     <div id="selectorModal" class="modal">
-
       <!-- modal content -->
       <div class="modal-content">
-          <p class='modal-text1'>Choose Player</p>
-          <p>You can use <span class='key'>Tab</span> to choose between player</p>
-          <p>You can use <span class='key'>Enter</span> to select player</p>
-          <p>You can use <span class='key'>Arrow keys</span> to move player</p>
+          <p class='modal-text'>Choose Player</p>
+          <p>Use <span class='key'>Tab</span> to choose between player</p>
+          <p>Use <span class='key'>Enter</span> to select player</p>
+          <p>Use <span class='key'>Arrow keys</span> to move player</p>
+
           <div class= "player-selector">
             <img class="player-img" src="images\char-boy-s.png" alt="" tabindex="0">
             <img class="player-img" src="images\char-cat-girl.png" alt="" tabindex="0">
@@ -41,16 +43,12 @@
           </div>
 
           <button class="startBtn">Start Game</button>
-
       </div><!-- end modal content -->
-
     </div><!-- end player-selector-modal -->
-
 
 
     <!-- modal -->
     <div id="gameModal" class="modal">
-
       <!-- modal content -->
       <div class="modal-content">
           <i class="fa fa-times-circle close"></i>
@@ -61,15 +59,16 @@
               <p>Your Score <span class="modal-score"> 0</span></p>
           </div><!-- end score-panel -->
           <button class="replayBtn">Play again!</button>
-
       </div><!-- end modal content -->
-
     </div><!-- end modal -->
 
-  </div>
+  </div><!-- end container -->
+
+
   <!-- scripts -->
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
+    <script src="js/engine.js"></script><!-- end scripts -->
+
 </body>
 </html>

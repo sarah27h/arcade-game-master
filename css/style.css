@@ -19,10 +19,6 @@ body {
 	margin: auto;
 }
 
-.hide {
-	visibility: hidden;
-}
-
 
 /*
  * Styles for player-panel
@@ -92,7 +88,6 @@ body {
 
 #selectorModal .player-selector .player-img:hover,
 #selectorModal .player-selector .player-img:focus {
-
 	box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
 	-moz-box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
 	-webkit-box-shadow: 0px 0px  10px rgba(16, 63, 106, 0.8);
@@ -157,7 +152,8 @@ body {
 }
 
 .modal .modal-text1,
- .modal .modal-text2 {
+.modal .modal-text2,
+.modal .modal-text {
     font-size: 20px;
     font-weight: bold;
     color: #ce2cae;
