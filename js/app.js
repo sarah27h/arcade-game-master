@@ -243,6 +243,19 @@ selectorModal.addEventListener('click', function(e) {
   }
 });
 
+selectorModal.addEventListener('keypress', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 13 && e.target.nodeName.toLowerCase() === 'img') {
+      // 13 is enter
+      // code for enter
+      src = e.target.getAttribute('src');
+
+      res = src.replace('\\', '/');
+      player.sprite = res;
+      console.log(res);
+    }
+});
+
 replayBtn.addEventListener('click',resetGame);
 
 function resetGame() {
