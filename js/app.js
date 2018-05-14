@@ -147,11 +147,11 @@ Player.prototype.update = function() {
     console.log(`you win`);
     console.log(this.y);
     showGameModal();
-    player.begin();
+    this.begin();
   }
 
   // after every update check if player touch enemy
-  player.checkCollisions();
+  this.checkCollisions();
 };
 
 /**
@@ -187,16 +187,16 @@ Player.prototype.handleInput = function(keyPressed) {
 Player.prototype.checkCollisions = function(){
 
   for (const enemy of allEnemies) {
-    if (player.x < enemy.x + enemy.width&&
-     player.x + player.width> enemy.x &&
-     player.y < enemy.y + enemy.height &&
-     player.height + player.y > enemy.y) {
+    if (this.x < enemy.x + enemy.width&&
+     this.x + this.width> enemy.x &&
+     this.y < enemy.y + enemy.height &&
+     this.height + this.y > enemy.y) {
        console.log(Resources.get(this.sprite).width);
-       console.log(`collisions ${player.x} ${player.y} ${enemy.x} ${enemy.y} ${player.height + player.y}`);
+       console.log(`collisions ${this.x} ${this.y} ${enemy.x} ${enemy.y} ${this.height + this.y}`);
 
        collisionCounter++;
        // place player at start position
-       player.begin();
+       this.begin();
     }
   }
 
@@ -206,8 +206,8 @@ Player.prototype.checkCollisions = function(){
 * @description place player at start position
 */
 Player.prototype.begin = function() {
-    player.x = 220;
-    player.y = 466;
+    this.x = 220;
+    this.y = 466;
     updateLives();
     console.log(`${collisionCounter} collisionCounter`);
 }
